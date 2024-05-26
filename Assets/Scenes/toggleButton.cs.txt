@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+using System;
+
+public class toggleButton : MonoBehaviour
+{
+    private int switchState;
+    public GameObject switchBtn;
+    bool onOrOff=false;
+    private float locationOfButton= 0;
+
+    public void Start()
+    {
+        locationOfButton = switchBtn.transform.localPosition.x;
+    }
+    public void OnSwitchButton()
+    {
+        switchBtn.transform.DOLocalMoveX(-switchBtn.transform.localPosition.x,.2f);
+        switchState = Math.Sign(-switchBtn.transform.localPosition.x);
+        // Debug.Log(switchState);
+        
+        if (-switchBtn.transform.localPosition.x==locationOfButton)
+        {
+            
+            onOrOff = false;
+        }
+        else
+        {
+            
+            onOrOff =true;
+        }
+        Debug.Log(onOrOff); 
+    }
+}
